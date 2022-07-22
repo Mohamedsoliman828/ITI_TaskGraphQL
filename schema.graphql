@@ -1,0 +1,27 @@
+type Comment {
+  id: String
+  author: String
+  body: String
+}
+
+type Post {
+  id: ID!
+  title: String
+  author: String
+  body: String
+  comments: [Comment]
+}
+
+type Query {
+  post(id: String!): Post
+  posts: [Post]
+}
+
+type Mutation {
+  createPost(title: String!, author: String!, body: String): Post
+  updatePost(id: String!, title: String, author: String, body: String): Post
+  deletePost(id: String!): [Post]
+  addCommentToPost(id: String!, author: String!, body: String!): Post
+  updateComment(id: String!, body: String!): Post
+  deleteComment(id: String!): Post
+}
